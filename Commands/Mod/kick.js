@@ -1,15 +1,33 @@
-module.exports = 
-{
+const discord = require('discord.js');
+
+module.exports = {
     name: 'kick',
     aliases: [
         'boot', 'remove', 'ban'
     ],
     description: 'Kicks user.',
-    args: false,
-    execute(message, args)
-    {
-        var userjs =  require('C:/Users/haegg/Desktop/Code/JavaScript/Discord.JS/user.js');
-        var users = userjs.users;
-        message.channel.send('#: ' + users.length);
+    args: true,
+    argsInfo: [
+        {
+            name: 'User',
+            summary: 'The user to kick.',
+            type: discord.User,
+            optional: false
+        },
+        {
+            name: 'User2',
+            summary: 'bblah',
+            type: discord.User,
+            optional: true
+        },
+        {
+            name: 'User3',
+            summary: 'bblahhhhh',
+            type: discord.User,
+            optional: true
+        }
+    ],
+    execute(message, user){
+
     }
 }

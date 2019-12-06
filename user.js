@@ -4,12 +4,12 @@ function User(name, id){
     this.name = name;
     this.id = id;
     this.rep = 0;
-};
+}
 
 User.instances = [];
 
 User.init = function(){
-    fs.readFile('C:/Users/haegg/Desktop/Code/JavaScript/Discord.JS/users.json', (err, data) => {
+    fs.readFile('./users.json', (err, data) => {
         if(err)
             throw err;
         content = "";
@@ -24,10 +24,10 @@ User.init = function(){
 
 User.save = function(){
     result = "";
-    fs.readFile('C:/Users/haegg/Desktop/Code/JavaScript/Discord.JS/users.json', (err, data) => {
+    fs.readFile('./users.json', (err, data) => {
         if(err)
             throw err;
-        fs.writeFile('C:/Users/haegg/Desktop/Code/JavaScript/Discord.JS/users.json', JSON.stringify(this.instances), (err, data) => {
+        fs.writeFile('./users.json', JSON.stringify(this.instances), (err, data) => {
             if(err)
                 throw err;
         });

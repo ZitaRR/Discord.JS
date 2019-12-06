@@ -3,7 +3,8 @@ const discord = require('discord.js');
 const client = new discord.Client();
 client.commands = new discord.Collection();
 const {prefix, token} = require('./config.json');
-const users = require('C:/Users/haegg/Desktop/Code/JavaScript/Discord.JS/user.js');
+const users = require('./user.js');
+const embeds = require('./embed.js');
 
 var dirsRecursive = function(dir, filelist)
 {
@@ -52,8 +53,9 @@ client.on('message', message =>
         return;
     
     const command = client.commands.get(name);
+    console.log(command.argsInfo.filter(element => element.optional === true).length);
     if(command.args && !args.length)
-        return message.reply(`you must provide arguments for this command!`);
+        return message.channel.send('', embeds.errorEmbed('Missing Arguments', 'You must provide arguments for this command!', command.argsInfo));
     
     try
     {
